@@ -4,6 +4,27 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Anish & Anju — Betrothal Invitation",
   description: "You are cordially invited to the Betrothal ceremony of Anju & Anish",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
+  openGraph: {
+    title: "Anish & Anju — Betrothal Invitation",
+    description: "You are cordially invited to the Betrothal ceremony of Anju & Anish",
+    url: "https://betrothalof-anish-and-anju.vercel.app",
+    siteName: "Anish & Anju Betrothal Invitation",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 1200,
+        alt: "Anish & Anju Betrothal Invitation Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
