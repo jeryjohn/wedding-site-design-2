@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-cormorant-garamond);
+  --font-sans: var(--font-jost);
+  --font-script: var(--font-mrs-saint-delafield);
+  --font-eb: var(--font-eb-garamond);
+}
+
+/* Font fallbacks */
+.font-serif { font-family: 'Cormorant Garamond', serif; }
+.font-sans { font-family: 'Jost', sans-serif; }
+.font-script { font-family: 'Mrs Saint Delafield', cursive; }
+.font-eb { font-family: 'EB Garamond', serif; }
+
+:root {
+  --cream: #cde0ed; /* Rich watercolor ice blue */
+  --cream-dark: #a9c6dc;
+  --gold: #b59453; /* Elegant soft gold */
+  --gold-light: #dfcb9f;
+  --gold-dark: #8c7035;
+  --brown: #112130; /* Deep navy text */
+  --brown-dark: #0a141f; /* Charcoal navy */
+  --brown-light: #3d5e75; /* Slate blue */
+  --text-main: #112130;
+  --text-sub: #3d5e75;
+  --white: #ffffff;
+  --blue-primary: #3d5e75;
+  --blue-light: #b9d2e3;
+  --blue-soft: #dbe7f0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--text-main);
+  font-family: 'EB Garamond', serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--blue-primary);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ============================================================
+   ANIMATIONS & UTILS
+   ============================================================ */
+.bg-watercolor {
+  background-image: linear-gradient(180deg, rgba(205, 224, 237, 0.65) 0%, rgba(185, 210, 227, 0.7) 50%, rgba(169, 198, 220, 0.65) 100%), url('/blue_bg.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  animation: bgPulse 60s ease-in-out infinite alternate;
+}
+
+@keyframes bgPulse {
+  0% {
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+  }
+  100% {
+    background-position: 52% 48%;
+    background-size: 108% 108%;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(1deg); }
+}
+
+.animate-float {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+/* Gold decorative line with shimmer */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.gold-line-shimmer {
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), var(--gold), var(--gold-light), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Gold button */
+.gold-btn {
+  background: linear-gradient(160deg, var(--gold), var(--gold-dark));
+  box-shadow: 0 8px 20px -8px rgba(32, 56, 77, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: var(--white);
+  font-family: 'Jost', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 13px 30px;
+  border-radius: 40px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.25);
+  cursor: pointer;
+}
+.gold-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -8px rgba(32, 56, 77, 0.55);
+}
+.gold-btn:active {
+  transform: translateY(0);
+}
+
+/* The main invitation card */
+.invitation-card {
+  background-image: 
+    linear-gradient(135deg, rgba(230, 240, 248, 0.88) 0%, rgba(205, 224, 237, 0.82) 50%, rgba(220, 235, 245, 0.88) 100%),
+    url('/blue_bg.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px rgba(92, 125, 149, 0.2),
+    0 20px 50px -10px rgba(92, 125, 149, 0.35),
+    0 40px 80px -20px rgba(17, 33, 48, 0.15);
+}
+
+/* Inner gold arch border */
+.arch-border {
+  border: 1.5px solid var(--gold-light);
+  border-radius: 0 0 14px 14px;
+  position: relative;
+}
+.arch-border::before {
+  content: "";
+  position: absolute;
+  top: -1.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 80px;
+  border: 1.5px solid var(--gold-light);
+  border-bottom: none;
+  border-radius: 999px 999px 0 0;
+}
+
+/* Decorative corner ornaments */
+.corner-ornament {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  opacity: 0.35;
+}
+.corner-ornament.tl { top: 12px; left: 12px; }
+.corner-ornament.tr { top: 12px; right: 12px; transform: scaleX(-1); }
+.corner-ornament.bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+.corner-ornament.br { bottom: 12px; right: 12px; transform: scale(-1); }
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}

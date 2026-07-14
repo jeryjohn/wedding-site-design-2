@@ -1,99 +1,78 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Anish & Anju — Betrothal Invitation Web App
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A premium, elegant, and highly interactive digital wedding invitation web application built for the Betrothal ceremony of Anish & Anju.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 🌟 Key Features & Design Details
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### 1. Smoky Blue Watercolor Aesthetic
+* **Theme & Colors:** Features a curated palette of ice-blue, smoky watercolor washes (`#cde0ed`), rich gold accents (`#b59453`), and deep slate-navy text (`#1e3545`) for maximum contrast and high legibility.
+* **Paper-Textured Elements:** Subtle organic textures run across both the outer background wash and the invitation card itself.
 
-## Project setup
+### 2. Silhouetted Blessing Illustration (Ephesians Section)
+* **Watercolor Look:** The couple blessing illustration (`couple_blessing.png`) is blended directly into the card using CSS `mix-blend-mode: multiply` and a soft opacity of `16%`.
+* **Zero Visible Borders:** Utilizes a custom radial-ellipse mask centered at the bottom to fade boundaries out on all sides:
+  `radial-gradient(ellipse at 50% 70%, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%)`
+* **Depth & Position:** Placed at the absolute bottom of the card with a gentle `0.3px` blur to keep the illustration in the background, ensuring the centered Ephesians 4:1–3 scripture text remains the primary focal point.
 
+### 3. High Accessibility for All Ages
+* **Tap Anywhere to Open:** Optimized for elder guests who might find it difficult to target small buttons. Tapping anywhere on the screen-wide landing page instantly opens the invitation.
+* **Responsive Layout:** Designed to scale beautifully across mobile viewports, tablets, and high-resolution monitors.
+
+### 4. Interactive Maps & Location Sharing
+* **Custom Leaflet Map:** Displays the venue coordinates with a matching golden marker pin.
+* **One-Click Actions:** Includes native "Open in Maps" navigation, "Get Directions" utility, and a web-share button to easily copy and forward the invitation details.
+
+---
+
+## 🛠️ Technology Stack
+
+* **Framework:** Next.js (App Router)
+* **Runtime / Engine:** React 19 & Turbopack
+* **Styling:** Tailwind CSS & Vanilla CSS
+* **Animations:** Framer Motion (blur-reveal page entrance, fade-ins, and scroll-triggered cues)
+* **Interactive Map:** Leaflet & React-Leaflet
+
+---
+
+## 🚀 Running Locally
+
+### 1. Install Dependencies
 ```bash
-$ npm install
+npm install
 ```
 
-## Compile and run the project
-
+### 2. Start the Development Server
 ```bash
-# development
-$ npm run start
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+### 3. Build for Production
+```bash
+npm run build
+npm run start
 ```
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ npm run test
+## ⚙️ Configuration & Customization
 
-# e2e tests
-$ npm run test:e2e
+All structural data (names, dates, parents, location queries, and map coordinates) is separated into a single configuration file. To edit or customize the invitation details, update [src/constants/data.ts](file:///Users/jerinjohn/BuildLab/wedding-invite-v2/src/constants/data.ts):
 
-# test coverage
-$ npm run test:cov
+```typescript
+export const CONFIG = {
+  brideName: "Anju",
+  brideParents: "Mathew & Thressiamma",
+  groomName: "Anish",
+  groomParents: "Joseph & Eliyamma",
+  date: "Thursday, July 23, 2026",
+  time: "11:30 AM",
+  venueName: "St. Michael's Church",
+  venueAddress: "24, Church Street, Royapuram, Chennai - 600013",
+  mapQuery: "St. Michaels Church, Royapuram, Chennai",
+  lat: 13.1114,
+  lng: 80.2942
+};
 ```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
-# wedding-site-design-2
