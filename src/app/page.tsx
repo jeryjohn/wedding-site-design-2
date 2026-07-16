@@ -70,20 +70,20 @@ export default function Home() {
   };
 
   const handleShare = async () => {
-    const shareData = {
-      title: 'Anish & Anju Betrothal',
-      text: `You are cordially invited to the Betrothal ceremony of Anju (D/o Mathew & Thressiamma) and Anish (S/o Joseph & Eliyamma) on Thursday, 23 July 2026 at 11:30 AM at ${CONFIG.venueName}, ${CONFIG.venueAddress}.`,
-      url: window.location.origin,
-    };
+    const text = `You are cordially invited to the Betrothal ceremony of Anju and Anish on Thursday, 23 July 2026 at 11:30 AM at ${CONFIG.venueName}, ${CONFIG.venueAddress}.`;
+    const url = window.location.origin;
     try {
       if (navigator.share) {
-        await navigator.share(shareData);
+        await navigator.share({
+          title: 'Anish & Anju Betrothal',
+          text: `${text}\n\n${url}`,
+        });
       } else if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`);
+        await navigator.clipboard.writeText(`${text}\n\n${url}`);
         alert('Invitation details copied to clipboard!');
       } else {
         const textArea = document.createElement("textarea");
-        textArea.value = `${shareData.text}\n${shareData.url}`;
+        textArea.value = `${text}\n\n${url}`;
         textArea.style.position = "fixed";
         textArea.style.opacity = "0";
         document.body.appendChild(textArea);
@@ -196,7 +196,7 @@ export default function Home() {
             />
 
             {/* Soft faded couple blessing silhouette printed onto the paper background at the bottom */}
-            <div 
+            <div
               className="absolute bottom-0 left-0 right-0 w-full h-[320px] pointer-events-none z-0 overflow-hidden"
               style={{
                 WebkitMaskImage: 'radial-gradient(ellipse at 50% 70%, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 80%)',
@@ -260,7 +260,7 @@ export default function Home() {
                 <p className="font-serif italic text-[15px] text-[#1e3545] leading-[1.7]">
                   &ldquo;The Lord has made everything beautiful in his time.&rdquo;
                 </p>
-                <div className="font-sans text-[10px] tracking-[0.18em] uppercase text-[#b59453] mt-2">Ecclesiastes 3:1</div>
+                <div className="font-sans text-[10px] tracking-[0.18em] uppercase text-[#b59453] mt-2">Ecclesiastes 3:11</div>
                 <GoldDivider className="mt-5" />
               </div>
 
