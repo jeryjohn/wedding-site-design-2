@@ -8,7 +8,7 @@ export const CONFIG = {
   groomParents: "Joseph & Eliyamma",
   groomAddress: "Son of Joseph and Eliyamma",
   brideName: "Anju Mathew",
-  brideParents: "Mathew & Thressiamma",
-  brideAddress: "Daughter of Mathew and Thressiamma",
+  brideParents: "Mathai & Thressiamma",
+  brideAddress: "Daughter of Mathai and Thressiamma",
   mapQuery: "Little+Flower+Forane+Church+Marygiri+Therthally+Kerala+670571",
 };
